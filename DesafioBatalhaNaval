@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+#define TAMANHO 10
+
+// Funções para exibir matrizes
+void exibirMatrizInt(int matriz[TAMANHO][TAMANHO]) {
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+// Funções para habilidades especiais
+void habilidadeCone(int matriz[TAMANHO][TAMANHO], int x, int y) {
+    for (int i = 0; i < 3 && x+i < TAMANHO; i++) {
+        for (int j = -i; j <= i; j++) {
+            if (y+j >= 0 && y+j < TAMANHO)
+                matriz[x+i][y+j] = 1;
+        }
+    }
+}
+
+void habilidadeCruz(int matriz[TAMANHO][TAMANHO], int x, int y) {
+    for (int i = -2; i <= 2; i++) {
+        if (x+i >= 0 && x+i < TAMANHO)
+            matriz[x+i][y] = 1;
+        if (y+i >= 0 && y+i < TAMANHO)
+            matriz[x][y+i] = 1;
+    }
+}
+
+void habilidadeOctaedro(int matriz[TAMANHO][TAMANHO], int x, int y) {
+    matriz[x][y] = 1;
+    if (x > 0) matriz[x-1][y] = 1;
+    if (x < TAMANHO-1) matriz[x+1][y] = 1;
+    if (y > 0) matriz[x][y-1] = 1;
+    if (y < TAMANHO-1) matriz[x][y+1] = 1;
+}
+
+// Programa principal
+int main() {
+    int tabuleiro[TAMANHO][TAMANHO] = {0};
+
+    // Nível Novato: posicionamento básico
+    int x_vert = 1, y_vert = 1;
+    int x_horiz = 5, y_horiz = 2;
+
+    for (int i = 0; i < 3; i++) tabuleiro[x_vert + i][y_vert] = 3;      // vertical
+    for (int i = 0; i < 4; i++) tabuleiro[x_horiz][y_horiz + i] = 3;    // horizontal
+
+    // Nível Aventureiro: navios diagonais
+    tabuleiro[2][2] = tabuleiro[3][3] = tabuleiro[4][4] = 3;            // diagonal principal
+    tabuleiro[7][2] = tabuleiro[6][3] = tabuleiro[5][4] = 3;            // diagonal inversa
+
+    printf("Tabuleiro com Navios (0 = livre, 3 = ocupado):\n");
+    exibirMatrizInt(tabuleiro);
+
+    // Nível Mestre: habilidades especiais
+    int habilidade[TAMANHO][TAMANHO] = {0};
+
+    printf("Habilidade: Cone (centro em 2,4)\n");
+    habilidadeCone(habilidade, 2, 4);
+    exibirMatrizInt(habilidade);
+
+    printf("Habilidade: Cruz (centro em 5,5)\n");
+    int cruz[TAMANHO][TAMANHO] = {0};
+    habilidadeCruz(cruz, 5, 5);
+    exibirMatrizInt(cruz);
+
+    printf("Habilidade: Octaedro (centro em 7,7)\n");
+    int octaedro[TAMANHO][TAMANHO] = {0};
+    habilidadeOctaedro(octaedro, 7, 7);
+    exibirMatrizInt(octaedro);
+
+    return 0;
+}
