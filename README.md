@@ -43,7 +43,7 @@ Este projeto simula o posicionamento de navios e aplicação de habilidades espe
 
 ---
 
-## 🛠Como Executar
+## Como Executar
 
 1. Compile o programa com um compilador C, como `gcc`:
    ```bash
