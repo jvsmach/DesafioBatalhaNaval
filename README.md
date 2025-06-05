@@ -43,11 +43,63 @@ Este projeto simula o posicionamento de navios e aplicação de habilidades espe
 
 ---
 
-## Como Executar
+## 🛠Como Executar
 
 1. Compile o programa com um compilador C, como `gcc`:
    ```bash
    gcc -o batalha batalha_naval.c
+   ```
 
-   - Execute o programa: ./batalha
-   
+2. Execute o programa:
+   ```bash
+   ./batalha
+   ```
+
+---
+
+## Requisitos
+
+- **Compilador C** (como GCC)
+- Nenhuma biblioteca externa é necessária
+
+---
+
+## Requisitos Funcionais e Não Funcionais
+
+### Funcionais
+- Posicionamento de navios com vetores
+- Exibição clara do tabuleiro e habilidades
+
+### Não Funcionais
+- Código organizado e comentado
+- Fácil manutenção e expansão futura
+- Performance eficiente (sem atrasos perceptíveis)
+
+---
+
+## Exemplos de Saída
+
+### Tabuleiro com Navios
+```
+0 0 0 0 0 0 0 0 0 0
+0 3 0 0 0 0 0 0 0 0
+0 3 3 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 3 0 0 0 0 0
+0 0 0 0 0 3 3 3 3 0
+0 0 0 0 0 0 0 0 0 0
+0 0 3 0 0 0 0 0 0 0
+...
+```
+
+### Habilidade Cone (centro 2,4)
+```
+0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+0 0 0 1 0 0 0 0 0 0
+0 0 1 1 1 0 0 0 0 0
+0 1 1 1 1 1 0 0 0 0
+...
+```
+
+---
